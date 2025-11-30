@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubik's Cube Simulator</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1 class="title">Rubik's Cube</h1>
+            <p class="subtitle">Interactive 3D Simulator & Solver</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Cube Viewport -->
+            <div class="cube-viewport">
+                <canvas id="cubeCanvas"></canvas>
+            </div>
+
+            <!-- Controls Panel -->
+            <div class="controls-panel">
+                <h2 class="panel-title">Controls</h2>
+
+                <!-- Cube Size Selector -->
+                <div class="control-section">
+                    <div class="section-label">Cube Size</div>
+                    <div class="size-selector">
+                        <button class="size-btn" data-size="2">2×2</button>
+                        <button class="size-btn active" data-size="3">3×3</button>
+                        <button class="size-btn" data-size="4">4×4</button>
+                        <button class="size-btn" data-size="5">5×5</button>
+                    </div>
+                </div>
+
+                <!-- Move Buttons -->
+                <div class="control-section">
+                    <div class="section-label">Face Moves</div>
+                    <div class="move-grid" id="moveGrid">
+                        <!-- Generated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Animation Speed -->
+                <div class="control-section">
+                    <div class="section-label">Animation Speed</div>
+                    <div class="speed-control">
+                        <input type="range" id="speedSlider" min="100" max="800" value="300" class="speed-slider">
+                        <div class="speed-labels">
+                            <span>Fast</span>
+                            <span id="speedValue">300ms</span>
+                            <span>Slow</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="control-section">
+                    <div class="section-label">Actions</div>
+                    <div class="action-buttons">
+                        <button class="action-btn scramble" id="scrambleBtn">Scramble</button>
+                        <button class="action-btn solve" id="solveBtn">Solve</button>
+                        <button class="action-btn reset" id="resetBtn">Reset</button>
+                    </div>
+                </div>
+
+                <!-- Status Display -->
+                <div class="status-display">
+                    <div class="status-label">Status</div>
+                    <div class="status-value" id="status">Ready</div>
+                </div>
+
+                <!-- Move History -->
+                <div class="move-history">
+                    <div class="status-label">Move History</div>
+                    <div class="history-moves" id="moveHistory">-</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <h3>How to Use</h3>
+            <p>
+                Select cube size (2×2 to 5×5) from the buttons above. Drag to rotate view. 
+                Use move buttons or keyboard: <kbd>R</kbd> <kbd>L</kbd> <kbd>U</kbd> <kbd>D</kbd> <kbd>F</kbd> <kbd>B</kbd> 
+                (Shift for counter-clockwise). For 4×4+, use wide moves (Rw, Lw, etc.) and inner layers.
+                <kbd>Scramble</kbd> randomizes, <kbd>Solve</kbd> reverses all moves.
+            </p>
+        </div>
+    </div>
+
+    <!-- App Scripts (ES Modules) -->
+    <script type="module" src="js/App.js"></script>
+</body>
+</html>
